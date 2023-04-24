@@ -31,6 +31,7 @@ public class RoomPanel extends JPanel {
         }
 
         revalidate();
+        CheckRoom(this);
         return this;
     }
 
@@ -49,6 +50,27 @@ public class RoomPanel extends JPanel {
     public void PreviousRoom() {
         currentRoom = currentRoom.previousRoom;
         DrawPanel();
+    }
+
+    public boolean CheckRoom(JPanel toCheck) {
+        if (toCheck.getComponentCount() <= 1) return true;
+
+        for (int i = 0; i < toCheck.getComponentCount(); i++) {
+            for (int y = 0; y < toCheck.getComponentCount(); y++) {
+                int[] firstDataSet = new int[] {
+                    toCheck.getComponent(i).getLocation().x, toCheck.getComponent(i).getLocation().y,
+                    toCheck.getComponent(i).getSize().width, toCheck.getComponent(i).getSize().height
+                };
+    
+                int[] secondDataSet = new int[] {
+                    toCheck.getComponent(y).getLocation().x, toCheck.getComponent(y).getLocation().y,
+                    toCheck.getComponent(y).getSize().width + 10, toCheck.getComponent(y).getSize().height
+                };
+    
+                System.out.println(GameInfo.isRoomOverlap(firstDataSet, secondDataSet));
+            }
+        }
+        return true;
     }
 
 }
