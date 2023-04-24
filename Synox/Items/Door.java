@@ -22,10 +22,6 @@ public class Door extends RoomItem {
         addActionListener(this);
     }
 
-    public Door(Point pos) {
-        doorPosition = pos;
-    }
-
     public Point GetRandomPosition() {
         return new Point((int)((Math.random() * (128-14))), (int)((Math.random() * (128-26))));
     }
