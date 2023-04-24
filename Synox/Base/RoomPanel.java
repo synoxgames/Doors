@@ -1,5 +1,6 @@
 package Synox.Base;
 import Synox.Items.ReturnDoor;
+import Synox.Items.RoomItem;
 import Synox.Settings.GameInfo;
 import javax.swing.*;
 
@@ -14,14 +15,19 @@ public class RoomPanel extends JPanel {
 
     public JPanel DrawPanel() {
         removeAll();
-        setPreferredSize(GameInfo.roomSize);
+        setPreferredSize(GameInfo.ROOM_SIZE);
         setBackground(currentRoom.roomColour);
         setLayout(null);
         add(currentRoom.roomDoor.BuildPanel());
-
         if (currentRoom.previousRoom != null) {
             ReturnDoor returnDoor = new ReturnDoor();
             add(returnDoor.BuildPanel());
+        }
+
+        if (!currentRoom.roomItems.isEmpty()) {
+            for (RoomItem item : currentRoom.roomItems) {
+                add(item.BuildPanel());
+            }
         }
 
         revalidate();
@@ -30,7 +36,7 @@ public class RoomPanel extends JPanel {
 
     public void NextRoom() {
         if (currentRoom.nextRoom == null) {
-            Room nextRoom = new Room();
+            Room nextRoom = GameInfo.GetRandomRoomType();
             nextRoom.previousRoom = currentRoom;
             currentRoom.nextRoom = nextRoom;
             currentRoom = nextRoom;

@@ -4,6 +4,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import Synox.Settings.GameInfo;
 
@@ -18,19 +19,22 @@ public class MainGame {
     public static int currentRoomCount = 1;
 
     public static void main(String[] args) {
-        frame.setPreferredSize(GameInfo.gameSize);
+        frame.setPreferredSize(GameInfo.MAIN_GAME_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMaximumSize(GameInfo.gameSize);
+        frame.setMaximumSize(GameInfo.MAIN_GAME_SIZE);
         frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
 
         room = new RoomPanel();
         gamePanel.setBackground(Color.black);
-        gamePanel.setSize(GameInfo.gamePanelSize);
+        gamePanel.setSize(GameInfo.GAME_PANEL_SIZE);
         gamePanel.add(room);        
         gamePanel.setLocation(64,64);
+
+        roomCountLabel = new JLabel("#1", SwingConstants.CENTER);
         
         roomCountLabel.setSize(128, 20);
-        roomCountLabel.setLocation(((GameInfo.gameSize.width - 20)/2), 128 + (20 - roomCountLabel.getText().length()));
+        roomCountLabel.setLocation((128 / 2) - 10 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
         roomCountLabel.setForeground(Color.white);
 
@@ -45,9 +49,9 @@ public class MainGame {
         currentRoomCount++;
         room.NextRoom();
         room.revalidate();
-        gamePanel.revalidate();
-        roomCountLabel.setLocation(((GameInfo.gameSize.width - 20)/2), 128 +20);
+        roomCountLabel.setLocation((128 / 2) - 10 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
+        gamePanel.revalidate();
         roomCountLabel.revalidate();
     }
 
@@ -55,13 +59,14 @@ public class MainGame {
         currentRoomCount--;
         room.PreviousRoom();
         room.revalidate();
-        roomCountLabel.revalidate();
-        roomCountLabel.setLocation(((GameInfo.gameSize.width - (20 - roomCountLabel.getText().length()))/2), 128 + 20);
+        roomCountLabel.setLocation((128 / 2) - 10 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
+        roomCountLabel.revalidate();
         gamePanel.revalidate();
     }
 
     public static void UnlockDoor() {
+        GameInfo.Log("Got here");
         room.currentRoom.UnlockDoor();
     }
 

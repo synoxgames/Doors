@@ -36,7 +36,7 @@ public class Door extends RoomItem {
         setBorderPainted(false);
         setContentAreaFilled(false);
         setLocation(doorPosition);
-        setSize(GameInfo.doorSize);
+        setSize(GameInfo.DOOR_SIZE);
         getModel().addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {

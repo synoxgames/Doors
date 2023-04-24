@@ -1,11 +1,13 @@
 package Synox.Items;
 
+import java.awt.Point;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
 public abstract class RoomItem extends JButton implements ActionListener {
     
-    public abstract JButton BuildPanel();
+    public Point itemPosition;
 
+    public abstract JButton BuildPanel();
 }

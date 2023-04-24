@@ -17,7 +17,7 @@ public class ReturnDoor extends RoomItem {
     public Point doorPosition;
 
     public ReturnDoor() {
-        doorPosition = new Point((128-GameInfo.returnDoor.width)/2, 128-GameInfo.returnDoor.height+5);
+        doorPosition = new Point((128-GameInfo.RETURN_DOOR_SIZE.width)/2, 128-GameInfo.RETURN_DOOR_SIZE.height+5);
         addActionListener(this);
     }
 
@@ -27,7 +27,7 @@ public class ReturnDoor extends RoomItem {
         setBorderPainted(false);
         setContentAreaFilled(false);
         setLocation(doorPosition);
-        setSize(GameInfo.returnDoor);
+        setSize(GameInfo.RETURN_DOOR_SIZE);
         getModel().addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
