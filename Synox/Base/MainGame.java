@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import Synox.Settings.GameInfo;
+import Synox.Settings.IconLoader;
 
 public class MainGame {
 
@@ -24,6 +25,7 @@ public class MainGame {
         frame.setMaximumSize(GameInfo.MAIN_GAME_SIZE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
+        frame.setIconImage(IconLoader.GetIcon("GameIcon.png").getImage());
 
         room = new RoomPanel();
         gamePanel.setBackground(Color.black);
@@ -34,7 +36,7 @@ public class MainGame {
         roomCountLabel = new JLabel("#1", SwingConstants.CENTER);
         
         roomCountLabel.setSize(128, 20);
-        roomCountLabel.setLocation((128 / 2) - 10 * String.valueOf(currentRoomCount).length(),140);
+        roomCountLabel.setLocation((128 / 2) - 2 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
         roomCountLabel.setForeground(Color.white);
 
@@ -49,7 +51,7 @@ public class MainGame {
         currentRoomCount++;
         room.NextRoom();
         room.revalidate();
-        roomCountLabel.setLocation((128 / 2) - 10 * String.valueOf(currentRoomCount).length(),140);
+        roomCountLabel.setLocation((128 / 2) - 2 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
         gamePanel.revalidate();
         roomCountLabel.revalidate();
@@ -59,7 +61,7 @@ public class MainGame {
         currentRoomCount--;
         room.PreviousRoom();
         room.revalidate();
-        roomCountLabel.setLocation((128 / 2) - 10 * String.valueOf(currentRoomCount).length(),140);
+        roomCountLabel.setLocation((128 / 2) - 2 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
         roomCountLabel.revalidate();
         gamePanel.revalidate();

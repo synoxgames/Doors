@@ -1,6 +1,5 @@
 package Synox.Settings;
 
-import java.io.File;
 import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
@@ -20,7 +19,6 @@ public class AudioPlayer {
         if (players >= maxPlayers) return;
         try {
             URL file = new URL("file:"+System.getProperty("user.dir")+"\\Synox\\Settings\\aud\\"+toPlay);
-          //  URL file = (AudioPlayer.class.getResource("\\img"+toPlay));
 
             AudioInputStream audInput = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
