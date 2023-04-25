@@ -3,7 +3,6 @@ import Synox.Items.ReturnDoor;
 import Synox.Items.RoomItem;
 import Synox.Settings.GameInfo;
 
-import java.awt.Dimension;
 import java.awt.Point;
 
 import javax.swing.*;

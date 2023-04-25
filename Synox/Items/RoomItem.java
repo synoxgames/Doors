@@ -16,4 +16,8 @@ public abstract class RoomItem extends JButton implements ActionListener {
     public void ChangePosition()  {
         itemPosition = GetRandomPosition();
     }
+
+    public RoomItem() {
+        setFocusable(false);
+    }
 }
