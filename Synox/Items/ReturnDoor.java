@@ -9,6 +9,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Synox.Base.MainGame;
+import Synox.Settings.AudioPlayer;
 import Synox.Settings.GameInfo;
 import Synox.Settings.IconLoader;
 
@@ -17,7 +18,7 @@ public class ReturnDoor extends RoomItem {
     public Point doorPosition;
 
     public ReturnDoor() {
-        doorPosition = GetRandomPosition();
+        doorPosition = new Point((128-GameInfo.RETURN_DOOR_SIZE.width)/2, 128-GameInfo.RETURN_DOOR_SIZE.height+5);
         addActionListener(this);
     }
 
@@ -47,10 +48,12 @@ public class ReturnDoor extends RoomItem {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainGame.LoadPreviousRoom();
+        AudioPlayer.PlaySound("ReturnDoor_Enter.wav");
     }
 
     @Override
     public Point GetRandomPosition() {
         return new Point((128-GameInfo.RETURN_DOOR_SIZE.width)/2, 128-GameInfo.RETURN_DOOR_SIZE.height+5);
     }
+    
 }

@@ -10,6 +10,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Synox.Base.MainGame;
+import Synox.Settings.AudioPlayer;
 import Synox.Settings.GameInfo;
 import Synox.Settings.IconLoader;
 
@@ -27,6 +28,7 @@ public class Button extends RoomItem {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainGame.UnlockDoor();
+        AudioPlayer.PlaySound("DoorUnlocked.wav");
     }
 
     @Override

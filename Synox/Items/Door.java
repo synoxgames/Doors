@@ -9,12 +9,14 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Synox.Base.MainGame;
+import Synox.Settings.AudioPlayer;
 import Synox.Settings.GameInfo;
 import Synox.Settings.IconLoader;
 
 public class Door extends RoomItem {
 
     public boolean isLocked = false;
+    boolean mouseIn = false;
 
     public Door() {
         itemPosition = GetRandomPosition();
@@ -39,10 +41,15 @@ public class Door extends RoomItem {
                 if (mod.isRollover()) {
                     setIcon(isLocked ? IconLoader.GetIcon("Door_Locked.png") : IconLoader.GetIcon("Door_Hover.png"));
                     setCursor(new Cursor(Cursor.HAND_CURSOR));
-                } else {
+                    if (!mouseIn) { 
+                        AudioPlayer.PlaySound(isLocked ? "DoorLocked_HVR.wav" : "Door_HVR.wav"); 
+                        mouseIn = true; 
+                    }
+                } else if (!mod.isRollover()) {
                     setIcon(IconLoader.GetIcon("Door.png"));
                     setCursor(Cursor.getDefaultCursor());
-                }
+                    mouseIn = false;
+                } 
             }
         });
         return this;
@@ -52,6 +59,9 @@ public class Door extends RoomItem {
     public void actionPerformed(ActionEvent e) {
         if (!isLocked) {
             MainGame.LoadNextRoom();
+            AudioPlayer.PlaySound("Door_Enter.wav");
+        } else {
+            AudioPlayer.PlaySound("DoorLocked.wav");
         }
     }
     
