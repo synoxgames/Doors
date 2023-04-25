@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import Synox.Items.Door;
 import Synox.Items.RoomItem;
 
+/**
+ * This class is used to describe what a fundemental room should look like in the game. It can be overwritten to add custom elements, but can also be used as an empty/blank room
+ */
 public class Room {
 
     public Door roomDoor;
-    public Color roomColour;
-    public Room previousRoom, nextRoom;
+    public Color roomColour; 
+    public Room previousRoom, nextRoom;   
     public ArrayList<RoomItem> roomItems = new ArrayList<RoomItem>();
 
     public Room() {
