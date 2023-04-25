@@ -15,10 +15,9 @@ import Synox.Settings.IconLoader;
 public class Door extends RoomItem {
 
     public boolean isLocked = false;
-    public Point doorPosition;
 
     public Door() {
-        doorPosition = GetRandomPosition();
+        itemPosition = GetRandomPosition();
         addActionListener(this);
     }
 
@@ -31,7 +30,7 @@ public class Door extends RoomItem {
         setIcon(IconLoader.GetIcon("Door.png"));
         setBorderPainted(false);
         setContentAreaFilled(false);
-        setLocation(doorPosition);
+        setLocation(itemPosition);
         setSize(GameInfo.DOOR_SIZE);
         getModel().addChangeListener(new ChangeListener() {
             @Override

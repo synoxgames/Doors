@@ -17,7 +17,7 @@ public class ReturnDoor extends RoomItem {
     public Point doorPosition;
 
     public ReturnDoor() {
-        doorPosition = new Point((128-GameInfo.RETURN_DOOR_SIZE.width)/2, 128-GameInfo.RETURN_DOOR_SIZE.height+5);
+        doorPosition = GetRandomPosition();
         addActionListener(this);
     }
 
@@ -48,5 +48,9 @@ public class ReturnDoor extends RoomItem {
     public void actionPerformed(ActionEvent e) {
         MainGame.LoadPreviousRoom();
     }
-    
+
+    @Override
+    public Point GetRandomPosition() {
+        return new Point((128-GameInfo.RETURN_DOOR_SIZE.width)/2, 128-GameInfo.RETURN_DOOR_SIZE.height+5);
+    }
 }

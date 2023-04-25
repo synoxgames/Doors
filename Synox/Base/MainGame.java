@@ -66,7 +66,6 @@ public class MainGame {
     }
 
     public static void UnlockDoor() {
-        GameInfo.Log("Got here");
         room.currentRoom.UnlockDoor();
     }
 

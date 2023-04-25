@@ -55,5 +55,4 @@ public class Button extends RoomItem {
     public Point GetRandomPosition() {
         return new Point((int)((Math.random() * (128-14))), (int)((Math.random() * (128-14))));
     }
-    
 }

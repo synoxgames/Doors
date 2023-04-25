@@ -2,6 +2,10 @@ package Synox.Base;
 import Synox.Items.ReturnDoor;
 import Synox.Items.RoomItem;
 import Synox.Settings.GameInfo;
+
+import java.awt.Dimension;
+import java.awt.Point;
+
 import javax.swing.*;
 
 public class RoomPanel extends JPanel {
@@ -31,7 +35,17 @@ public class RoomPanel extends JPanel {
         }
 
         revalidate();
-        CheckRoom(this);
+
+        if (!CheckRoom(this)) {
+            currentRoom.roomDoor.ChangePosition();
+            if (!currentRoom.roomItems.isEmpty()) {
+                for (RoomItem item : currentRoom.roomItems) {
+                    item.ChangePosition();
+                }
+            }
+            DrawPanel();
+        }
+
         return this;
     }
 
@@ -56,18 +70,24 @@ public class RoomPanel extends JPanel {
         if (toCheck.getComponentCount() <= 1) return true;
 
         for (int i = 0; i < toCheck.getComponentCount(); i++) {
+            Point dataOnePos = toCheck.getComponent(i).getLocation();
             for (int y = 0; y < toCheck.getComponentCount(); y++) {
+                if (y == i) continue;
+                Point dataTwoPos = toCheck.getComponent(y).getLocation();
+
                 int[] firstDataSet = new int[] {
-                    toCheck.getComponent(i).getLocation().x, toCheck.getComponent(i).getLocation().y,
-                    toCheck.getComponent(i).getSize().width, toCheck.getComponent(i).getSize().height
+                    dataOnePos.x, dataOnePos.y,
+                    toCheck.getComponent(i).getSize().width + dataOnePos.x, toCheck.getComponent(i).getSize().height + dataOnePos.y
                 };
     
                 int[] secondDataSet = new int[] {
-                    toCheck.getComponent(y).getLocation().x, toCheck.getComponent(y).getLocation().y,
-                    toCheck.getComponent(y).getSize().width + 10, toCheck.getComponent(y).getSize().height
+                    dataTwoPos.x, dataTwoPos.y,
+                    toCheck.getComponent(y).getSize().width + dataTwoPos.x, toCheck.getComponent(y).getSize().height + dataTwoPos.y
                 };
     
-                System.out.println(GameInfo.isRoomOverlap(firstDataSet, secondDataSet));
+                if (GameInfo.isRoomOverlap(firstDataSet, secondDataSet))  {
+                    return false;
+                }
             }
         }
         return true;
