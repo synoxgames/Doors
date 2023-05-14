@@ -1,6 +1,7 @@
 package Synox.Base;
 
 import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,7 +17,7 @@ public class MainGame {
 
     private static JPanel gamePanel = new JPanel();
     private static JLabel roomCountLabel = new JLabel();
-
+    public static InventoryPanel inventoryPanel = new InventoryPanel();
     public static int currentRoomCount = 1;
 
     public static void main(String[] args) {
@@ -34,12 +35,11 @@ public class MainGame {
         gamePanel.setLocation(64,64);
 
         roomCountLabel = new JLabel("#1", SwingConstants.CENTER);
-        
         roomCountLabel.setSize(128, 20);
         roomCountLabel.setLocation((128 / 2) - 2 * String.valueOf(currentRoomCount).length(),140);
         roomCountLabel.setText("#"+currentRoomCount);
         roomCountLabel.setForeground(Color.white);
-
+        frame.add(inventoryPanel.BuildPanel());
         frame.add(roomCountLabel);
         frame.add(gamePanel);
         frame.pack();
@@ -69,6 +69,11 @@ public class MainGame {
 
     public static void UnlockDoor() {
         room.currentRoom.UnlockDoor();
+        if (room.currentRoom.nextRoom != null) {
+            if (room.currentRoom.nextRoom.GetLockState()) {
+                room.currentRoom.nextRoom.UnlockDoor();
+            }
+        }
     }
 
     public static int GetRandomColourVal() {

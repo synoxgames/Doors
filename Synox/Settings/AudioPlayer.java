@@ -11,7 +11,7 @@ import javax.sound.sampled.LineListener;
 public class AudioPlayer {
 
     public static boolean isPlaying = false;
-    public static final int maxPlayers = 2;
+    public static final int maxPlayers = 4;
 
     static int players = 0;
 

@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import Synox.Items.Door;
-import Synox.Items.RoomItem;
 
 /**
  * This class is used to describe what a fundemental room should look like in the game. It can be overwritten to add custom elements, but can also be used as an empty/blank room
@@ -38,6 +37,10 @@ public class Room {
 
     public void AddItem(RoomItem toAdd) {
         roomItems.add(toAdd);
+    }
+
+    public boolean GetLockState() {
+        return roomDoor.isLocked;
     }
     
     @Override

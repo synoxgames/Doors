@@ -1,6 +1,5 @@
 package Synox.Base;
 import Synox.Items.ReturnDoor;
-import Synox.Items.RoomItem;
 import Synox.Settings.GameInfo;
 
 import java.awt.Point;
@@ -105,6 +104,7 @@ public class RoomPanel extends JPanel {
     
                 // Check the stored data of both points and return false if there are any overlaps
                 if (GameInfo.isRoomOverlap(firstDataSet, secondDataSet))  {
+                    GameInfo.Log("Overlap Found, Redrawing room!");
                     return false;
                 }
             }

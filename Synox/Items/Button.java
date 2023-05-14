@@ -10,6 +10,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Synox.Base.MainGame;
+import Synox.Base.RoomItem;
 import Synox.Settings.AudioPlayer;
 import Synox.Settings.GameInfo;
 import Synox.Settings.IconLoader;
