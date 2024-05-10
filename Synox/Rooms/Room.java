@@ -1,7 +1,8 @@
-package Synox.Base;
+package Synox.Rooms;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import Synox.Base.RoomItem;
 import Synox.Items.Door;
 
 /**

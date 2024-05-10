@@ -1,10 +1,10 @@
 package Synox.Rooms;
 
-public class BasicRoom extends Room {
-    
+public class KeyRoom extends Room {
+
     @Override
     public String toString() {
-        return "Basic Room";
+        return "Key Room";
     }
-
+    
 }

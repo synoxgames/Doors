@@ -1,5 +1,6 @@
 package Synox.Base;
 import Synox.Items.ReturnDoor;
+import Synox.Rooms.Room;
 import Synox.Settings.GameInfo;
 
 import java.awt.Point;

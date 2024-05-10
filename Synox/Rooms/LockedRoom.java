@@ -1,6 +1,5 @@
 package Synox.Rooms;
 
-import Synox.Base.Room;
 import Synox.Items.Button;
 
 public class LockedRoom extends Room {

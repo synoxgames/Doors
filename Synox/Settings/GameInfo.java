@@ -2,7 +2,6 @@ package Synox.Settings;
 
 import Synox.Rooms.*;
 import Synox.Base.MainGame;
-import Synox.Base.Room;
 
 import java.awt.*;
 
@@ -19,12 +18,14 @@ public class GameInfo {
     public static final Point INVENTORY_POSITION = new Point(55, 140);
 
     public static Room GetRandomRoomType() {
-        int i = (int) (((3 - 1) * Math.random()) + 1);
+        int i = (int) (((4 - 1) * Math.random()) + 1);
         switch (i) {
             case 1:
                 return new BasicRoom();
             case 2:
                 return new LockedRoom();
+            case 3:
+                return new MonsterRoom();
             default:
                 return new BasicRoom();
         }
