@@ -1,9 +1,7 @@
 package Synox.Creatures;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Timer;
+import javax.swing.Timer;
 
 import javax.swing.JButton;
 
@@ -12,7 +10,26 @@ import Synox.Base.RoomItem;
 public abstract class Creature extends RoomItem {
 
     public abstract JButton BuildPanel();
+    public abstract void actionPerformed(ActionEvent e);
     public abstract void CreatureMovement();
-    public Timer movementTimer = new Timer();
-    
+    public boolean isActive = true;
+    public int moveSpeed = 1;
+
+    private int timer = 0;
+    public Timer movementTimer = new Timer(timer, this);
+
+    public void StartTimer() {
+        movementTimer.start();
+    }
+
+    public void StopTimer() {
+        movementTimer.stop();
+    }
+
+    public void ResetTimer() {
+        movementTimer.restart();
+    }
+
+    public void SwitchState() { isActive = !isActive; }
+    public void SetState(boolean state) { isActive = state; }
 }

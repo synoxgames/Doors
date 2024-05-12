@@ -31,6 +31,10 @@ public class GameInfo {
         }
     }
 
+    public static int GetRandomNumber(int min, int max) {
+        return (int)((max-min) * Math.random() + min);
+    }
+
     public static void Log(Object log) {
         System.out.println(log);
     }

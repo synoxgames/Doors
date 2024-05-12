@@ -27,8 +27,11 @@ public class BasicMonster extends Creature {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        while (movementTimer.isRunning()) {
+            int movX = GameInfo.GetRandomNumber(-1, 1);
+            int movY = GameInfo.GetRandomNumber(-1, 1);
+            Dimension newPos = new Dimension();
+        }
     }
 
     @Override
@@ -44,6 +47,7 @@ public class BasicMonster extends Creature {
 
     @Override
     public void CreatureMovement() {
+
     }
 
     @Override
