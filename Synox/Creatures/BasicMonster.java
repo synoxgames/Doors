@@ -1,12 +1,14 @@
 package Synox.Creatures;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.util.Timer;
 
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -53,6 +55,20 @@ public class BasicMonster extends Creature {
     @Override
     public Point GetRandomPosition() {
         return new Point((int)((Math.random() * (128-8))), (int)((Math.random() * (128-8))));
+    }
+
+
+    @Override
+    public void update(Dimension size) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+
+    @Override
+    public void paint(JComponent parent, Graphics2D g2d) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'paint'");
     }
     
 }

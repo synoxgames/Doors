@@ -5,9 +5,10 @@ import javax.swing.Timer;
 
 import javax.swing.JButton;
 
+import Synox.Base.AnimatedObject;
 import Synox.Base.RoomItem;
 
-public abstract class Creature extends RoomItem {
+public abstract class Creature extends RoomItem implements AnimatedObject {
 
     public abstract JButton BuildPanel();
     public abstract void actionPerformed(ActionEvent e);
